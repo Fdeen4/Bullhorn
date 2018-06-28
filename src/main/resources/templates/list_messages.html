@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <a href="/addlist">Add a message</a><br />
+        <h1>Message List</h1>
+        <div th:each="eachRecipient:${recipient}">
+            <h2  th:text="${eachRecipient.myName}"></h2>
+            <h3 th:text="${#lists.size(eachRecipient.messages)>0}?'My Colors':'No colors for me'"></h3>
+            <div th:each="eachMessage:${eachRecipient.messages}">
+                <h4 th:if="${#lists.size(eachMessage.messageName)>0}" th:text="${eachMessageStat.messageName}">Comments</h4>
+            </div>
+        </div>
+    </div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
